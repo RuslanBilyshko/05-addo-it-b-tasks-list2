@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import g, request, redirect, url_for, render_template
 
-from flask.ext.login import LoginManager, current_user, login_user, logout_user
+from flask_login import LoginManager, current_user, login_user, logout_user
 from models import User, initialize_database
 
 app = Flask("TaskList")
