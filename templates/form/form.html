@@ -1,0 +1,14 @@
+{% extends "base_layout.html" %}
+{% block content %}
+
+
+  <form action="{{ url_for("task_create") }}" method="POST">
+    {% for field in form %}
+        {% with field=field %}
+            {% include "form/_field.html" %}
+        {% endwith %}
+    {% endfor %}
+      <br>
+      <button type="submit">Сохранить</button>
+  </form>
+{% endblock %}
