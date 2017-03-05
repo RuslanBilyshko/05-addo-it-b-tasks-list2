@@ -1,0 +1,8 @@
+{
+  "name": "Task-List",
+  "dependencies": {
+    "bootstrap": ">= 3.0.0",
+    "jqueryui-datepicker": "^0.0.3",
+    "jquery.maskedinput": "https://github.com/digitalBush/jquery.maskedinput.git#^1.4.1"
+  }
+}

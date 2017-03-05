@@ -6,6 +6,7 @@ db = pw.SqliteDatabase('database.db')
 
 def initialize_database():
     User.create_table(fail_silently=True)
+    Task.create_table(fail_silently=True)
 
     try:
         User.create(
@@ -14,6 +15,7 @@ def initialize_database():
         )
     except pw.IntegrityError:
         pass
+
 
 class BaseModel(pw.Model):
     class Meta:
@@ -39,3 +41,12 @@ class User(BaseModel):
 
     def __repr__(self):
         return '<User %r>' % (self.username)
+
+
+class Task(BaseModel):
+    title = pw.CharField(max_length=100)
+    description = pw.TextField()
+    date = pw.DateField()
+    time = pw.TimeField()
+    status = pw.IntegerField(default=0)
+    user = pw.ForeignKeyField(User)

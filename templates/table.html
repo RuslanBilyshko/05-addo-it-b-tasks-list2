@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>#</th>
+        {% for h in header %}
+            <th>{{ h }}</th>
+        {% endfor %}
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <th scope="row">{{ rows.index(row) + 1 }}</th>
+            {% for td in row  %}
+                <td>{{ td | safe }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>

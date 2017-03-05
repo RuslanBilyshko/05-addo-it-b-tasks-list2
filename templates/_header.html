@@ -1,0 +1,41 @@
+{% set nav_bar_list = [
+            {
+                "class": "btn btn-default",
+                "href": "/",
+                "title": "Главная"
+            },
+            {
+                "class": "btn btn-info",
+                "href": url_for("task_list"),
+                "title": "Список дел"
+            },
+            {
+                "class": "btn btn-success",
+                "href": url_for("task_create"),
+                "title": "Создать задание"
+            }
+        ]
+%}
+
+<header class="col-sm-12">
+            <div class="pull-left logo">
+                {% for link in nav_bar_list %}
+                    {% if request.path ==  link['href'] %}{% set active_class = " active" %}{% endif %}
+                    <a class="{{ link['class'] }} {{ active_class }}" href="{{ link['href'] }}">{{ link['title'] }}</a>
+                {% endfor %}
+            </div>
+
+            <div class="pull-right">
+                {% if g.user.is_authenticated %}
+                    <p>Hello, <strong>{{ g.user.username }}</strong>
+                        <a class="btn btn-default" href="{{ url_for('logout') }}">Выход</a>
+                    </p>
+                {% else %}
+                    <p>
+                        <a class="btn btn-success" href="{{ url_for('login') }}">Вход</a>
+                        <a class="btn btn-primary" href="{{ url_for('registration') }}">Регистрация</a>
+                    </p>
+                {% endif %}
+            </div>
+
+        </header>

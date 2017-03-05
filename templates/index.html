@@ -1,14 +1,15 @@
 {% extends "base_layout.html" %}
 {% block content %}
 
-
-{% if g.user.is_authenticated %}
-    <h1>Hello, {{ g.user.username }}</h1>
-    <a href="/logout">Logout</a>
-{% else %}
-    <h1>Main page</h1>
-    <a href="/login">Login</a>
-{% endif %}
+    {% if g.user.is_authenticated %}
+        <h1>Список дел на сегодня</h1>
+        {{ content | safe }}
+    {% else %}
+        <h1>Главная страница</h1>
+        <p>Чтобы начать, войдите или зарегистрируйтесь</p>
+        <a class="btn btn-success" href="/login">Вход</a>
+        <a class="btn btn-primary" href="/registration">Регистрация</a>
+    {% endif %}
 
 
 {% endblock %}
